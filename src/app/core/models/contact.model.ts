@@ -3,6 +3,7 @@ export interface CreateContact {
   lastName: string;
   email: string;
   telephone: string;
+  birthday: Date;
   address1: string;
   address2: string;
   address3: string;

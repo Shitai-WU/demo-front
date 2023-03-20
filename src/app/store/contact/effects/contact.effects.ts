@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { contactActions } from "../actions/contact.actions";
-import { ContactService } from "../../../core/service/contact.service";
+import { ContactService } from '../../../core';
 import { fromContact } from "../models/contact.entity";
 import { Store } from "@ngrx/store";
 import { getSelectedContact } from "../selectors/contact.selectors";

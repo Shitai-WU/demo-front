@@ -1,0 +1,9 @@
+<button mat-raised-button color="primary" (click)="openCreateContactFormDialog()">
+  <mat-icon>add</mat-icon>
+  Add Contact
+</button>
+<ng-container *ngIf="(allContact$ | async) as allContacts">
+  <app-contact-list (openDeleteContactFormDialogEvent)="openDeleteContactFormDialog($event)"
+                    (openEditContactFormDialogEvent)="openEditContactFormDialog($event)"
+                    (showContactDetailEvent)="showContactDetail($event)" [contacts]="allContacts"></app-contact-list>
+</ng-container>
