@@ -2,6 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from
 import { Contact } from '../../../core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-list',
@@ -20,6 +21,8 @@ export class ContactListComponent implements AfterViewInit {
   dataSource = new MatTableDataSource<Contact>([]);
   displayedColumns: string[] = ['firstName', 'lastName', 'birthday', 'email', 'action'];
 
+  filterControl = new FormControl('', Validators.required);
+
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
@@ -34,5 +37,10 @@ export class ContactListComponent implements AfterViewInit {
 
   openDeleteContactFormDialog(id: string): void {
     this.openDeleteContactFormDialogEvent.emit(id);
+  }
+
+  applyFilter(event: KeyboardEvent) {
+    const target = event.target as HTMLInputElement;
+    this.dataSource.filter = target.value.trim().toLowerCase();
   }
 }

@@ -1,3 +1,6 @@
+<mat-form-field>
+  <input (keyup)="applyFilter($event)" matInput placeholder="Filter">
+</mat-form-field>
 <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="firstName">
     <th mat-header-cell mat-sort-header *matHeaderCellDef>First Name</th>

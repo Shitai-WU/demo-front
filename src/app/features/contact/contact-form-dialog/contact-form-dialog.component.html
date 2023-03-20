@@ -22,7 +22,7 @@
 
     <mat-form-field>
       <mat-label>Telephone</mat-label>
-      <input matInput placeholder="0123456789" formControlName="telephone" required>
+      <input matInput placeholder="0123456789" formControlName="telephone" required type="number">
       <mat-error *ngIf="telephoneControl.hasError('required')">required</mat-error>
     </mat-form-field>
 
