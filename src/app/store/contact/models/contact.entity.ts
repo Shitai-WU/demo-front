@@ -2,8 +2,8 @@ import { Contact } from '../../../core';
 
 export interface Address {
   address1: string;
-  address2: string;
-  address3: string;
+  address2: string | null;
+  address3: string | null;
 }
 
 export interface ContactEntity {

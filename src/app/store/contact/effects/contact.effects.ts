@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { contactActions } from "../actions/contact.actions";
+import { contactActions } from '../actions/contact.actions';
 import { ContactService } from '../../../core';
-import { fromContact } from "../models/contact.entity";
-import { Store } from "@ngrx/store";
-import { getSelectedContact } from "../selectors/contact.selectors";
+import { fromContact } from '../models/contact.entity';
+import { Store } from '@ngrx/store';
+import { getSelectedContact } from '../selectors/contact.selectors';
 
 
 @Injectable()
@@ -22,8 +22,8 @@ export class ContactEffects {
         .pipe(
           map((contacts) => contacts.map(fromContact)),
           map((contacts) => contactActions.loadContactsSuccess({contacts})),
-          catchError(error => of(contactActions.loadContactsFailure({error}))))
-      )
+          catchError((error) => of(contactActions.loadContactsFailure({error})))),
+      ),
     );
   });
 
@@ -37,9 +37,9 @@ export class ContactEffects {
             .pipe(
               map((contact) => fromContact(contact)),
               map((contact) => contactActions.findContactSuccess({contact})),
-              catchError(error => of(contactActions.findContactFailure({error}))));
-        }
-      )
+              catchError((error) => of(contactActions.findContactFailure({error}))));
+        },
+      ),
     );
   });
 
@@ -49,9 +49,9 @@ export class ContactEffects {
       switchMap((action) => this.contactService.addContact(action.createContact)
         .pipe(
           map((contact) => fromContact(contact)),
-          map((contact) => contactActions.findContactSuccess({contact})),
-          catchError(error => of(contactActions.findContactFailure({error}))))
-      )
+          map((contact) => contactActions.addContactSuccess({contact})),
+          catchError((error) => of(contactActions.addContactFailure({error})))),
+      ),
     );
   });
 
@@ -62,8 +62,8 @@ export class ContactEffects {
         .pipe(
           map((contact) => fromContact(contact)),
           map((contact) => contactActions.updateContactSuccess({contact})),
-          catchError(error => of(contactActions.updateContactFailure({error}))))
-      )
+          catchError((error) => of(contactActions.updateContactFailure({error})))),
+      ),
     );
   });
 
@@ -73,8 +73,8 @@ export class ContactEffects {
       switchMap((action) => this.contactService.deleteContact(action.id)
         .pipe(
           map(() => contactActions.deleteContactSuccess({id: action.id})),
-          catchError(error => of(contactActions.updateContactFailure({error}))))
-      )
+          catchError(error => of(contactActions.deleteContactFailure({error})))),
+      ),
     );
   });
 }

@@ -2,7 +2,6 @@ import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from
 import { Contact } from '../../../core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-list',
@@ -20,8 +19,6 @@ export class ContactListComponent implements AfterViewInit {
   @ViewChild(MatSort) sort: MatSort = new MatSort();
   dataSource = new MatTableDataSource<Contact>([]);
   displayedColumns: string[] = ['firstName', 'lastName', 'birthday', 'email', 'action'];
-
-  filterControl = new FormControl('', Validators.required);
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;

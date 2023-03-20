@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContactFormDialogComponent } from './contact-form-dialog.component';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ContactFormDialogComponent', () => {
   let component: ContactFormDialogComponent;
@@ -8,9 +10,11 @@ describe('ContactFormDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ContactFormDialogComponent ]
+      declarations: [ContactFormDialogComponent],
+      providers: [{provide: MAT_DIALOG_DATA, useValue: {}}],
+      schemas: [NO_ERRORS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ContactFormDialogComponent);
     component = fixture.componentInstance;
