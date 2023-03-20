@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ContactListComponent implements AfterViewInit {
   @Input() set contacts(contacts: Contact[]) {
     this.dataSource.data = contacts;
-  };
+  }
 
   @Output() showContactDetailEvent = new EventEmitter<string>();
   @Output() openEditContactFormDialogEvent = new EventEmitter<Contact>();

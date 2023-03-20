@@ -4,6 +4,7 @@
   "newProjectRoot": "projects",
   "cli": {
     "schematicCollections": [
+      "@angular-eslint/schematics",
       "@ngrx/schematics"
     ]
   },
@@ -104,6 +105,15 @@
               "src/styles.scss"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
           }
         }
       }

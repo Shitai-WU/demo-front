@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { ContactFacade } from '../../../store/contact';
@@ -8,7 +8,7 @@ import { ContactFacade } from '../../../store/contact';
   templateUrl: './contact-detail-container.component.html',
   styleUrls: ['./contact-detail-container.component.scss'],
 })
-export class ContactDetailContainerComponent implements OnInit {
+export class ContactDetailContainerComponent {
   contact$ = this.route.params.pipe(
     map((params) => params['id']),
     filter((id) => !!id),
@@ -18,9 +18,4 @@ export class ContactDetailContainerComponent implements OnInit {
 
   constructor(private contactFacade: ContactFacade, private route: ActivatedRoute) {
   }
-
-  ngOnInit(): void {
-
-  }
-
 }

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Contact, CreateContact } from "../models/contact.model";
+import { Contact, CreateContact } from '../models';
 import { catchError } from "rxjs/operators";
 import { Observable, throwError } from "rxjs";
 
@@ -8,7 +8,7 @@ import { Observable, throwError } from "rxjs";
   providedIn: 'root',
 })
 export class ContactService {
-  private baseUrl: string = '/api/contacts'
+  private baseUrl = '/api/contacts'
 
   constructor(private http: HttpClient) {
   }
